@@ -1,0 +1,21 @@
+import mysql.connector
+
+mydb = mysql.connector.connect(
+  host = "sql11.freesqldatabase.com",
+  user = "sql11393379",
+  password = "2aqv8gEbKG",
+  database = "sql11393379"
+)
+
+mycursor = mydb.cursor()
+
+french, english = "trois", "three"
+
+sql = "INSERT INTO voc_fr (inhalt, datum) VALUES (%s, %s)"
+val = (french + "," + english, "17.02.2021")
+
+mycursor.execute(sql, val)
+
+mydb.commit()
+
+print(mycursor.rowcount, "record inserted.")
